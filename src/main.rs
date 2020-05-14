@@ -1,12 +1,11 @@
 use std::io::stdin;
+const VOWELS: &'static [&'static str] = &["a", "e", "i", "o", "u"];
 
 fn pig_latinize(s : &String) -> String {
-	let vowels: Vec<&str> = vec!("a", "e", "i", "o", "u");
-
 	let mut retval: String  = String::new();
 	let first_letter = &s[0..1];
 	let rest_of_string = &s[1..];
-	match vowels.iter().find(|&&vowel| vowel == first_letter) {
+	match VOWELS.iter().find(|&&vowel| vowel == first_letter) {
 		Some(_) => {
 			retval.push_str(&s.trim()[..]);
 			retval.push_str("hay");
