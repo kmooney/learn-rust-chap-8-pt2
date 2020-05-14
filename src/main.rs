@@ -22,15 +22,20 @@ fn pig_latinize(s : &String) -> String {
 
 fn main() {
 	
-	println!("Okay, bud. Type a word and I'll make it pig latin.");
-
-    let mut input_string:String = String::new();
-    match stdin().read_line(&mut input_string) {
-    	Ok(_num_bytes) => {
-    		println!("I see you typed {}.  The pig latin of that is {}", input_string.trim(), pig_latinize(&input_string))
-    	},
-    	Err(_) => {
-    		println!("I don't know dude.");
-    	}
-    }
+	loop {
+		println!("Okay, bud. Type a word and I'll make it pig latin.");
+	    let mut input_string:String = String::new();
+	    match stdin().read_line(&mut input_string) {
+	    	Ok(num_bytes) => {
+	    		if num_bytes == 0 {
+	    			println!("okay, bye.");
+	    			return;
+	    		}
+	    		println!("I see you typed {}.  The pig latin of that is {}", input_string.trim(), pig_latinize(&input_string))
+	    	},
+	    	Err(_) => {
+	    		println!("I don't know dude.");
+	    	}
+	    }
+	}
 }
